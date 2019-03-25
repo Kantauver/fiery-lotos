@@ -8,17 +8,4 @@ import { Component } from '@angular/core';
 
 export class AppComponent {
 
-  menuItems = [
-    { text: 'Hide' },
-    { text: 'Delete' },
-    {
-        text: 'Clipboard',
-        items: [
-            { text: 'Copy' },
-            { text: 'Clear' },
-            { text: 'Paste' }
-        ]
-    }
-  ];
-
 }
