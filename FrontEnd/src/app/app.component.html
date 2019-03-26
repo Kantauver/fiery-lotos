@@ -1,43 +1,124 @@
-<div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-    <button type="button" class="btn btn-primary">Primary</button>
-    <div class="btn-group" role="group">
-      <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
-      <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-        <a class="dropdown-item" href="#">Dropdown link</a>
-        <a class="dropdown-item" href="#">Dropdown link</a>
+<nav class="navbar navbar-default navbar-fixed-top header-menu">
+  <div class="container-fluid">
+      <i class="fa fa-2x fa-bars menu-toggle-button" aria-hidden="true" (click)="toggleLeftMenu()"></i>
+      <a>
+          <img class="logo-image" src="./assets/images/fiery-lotos-logo.png" alt="Fiery Lotos"/>
+      </a>
+      <div class="header-menu-right-button">
+        <a title="User">
+            <i class="fa fa-user fa-2x"></i>
+            <span>Lotos</span>
+        </a>
       </div>
-    </div>
   </div>
-  
-  <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-    <button type="button" class="btn btn-success">Success</button>
-    <div class="btn-group" role="group">
-      <button id="btnGroupDrop2" type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
-      <div class="dropdown-menu" aria-labelledby="btnGroupDrop2">
-        <a class="dropdown-item" href="#">Dropdown link</a>
-        <a class="dropdown-item" href="#">Dropdown link</a>
-      </div>
-    </div>
-  </div>
-  
-  <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-    <button type="button" class="btn btn-info">Info</button>
-    <div class="btn-group" role="group">
-      <button id="btnGroupDrop3" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
-      <div class="dropdown-menu" aria-labelledby="btnGroupDrop3" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 35px, 0px); top: 0px; left: 0px; will-change: transform;">
-        <a class="dropdown-item" href="#">Dropdown link</a>
-        <a class="dropdown-item" href="#">Dropdown link</a>
-      </div>
-    </div>
-  </div>
-  
-  <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-    <button type="button" class="btn btn-danger">Danger</button>
-    <div class="btn-group" role="group">
-      <button id="btnGroupDrop4" type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
-      <div class="dropdown-menu" aria-labelledby="btnGroupDrop4" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 35px, 0px); top: 0px; left: 0px; will-change: transform;">
-        <a class="dropdown-item" href="#">Dropdown link</a>
-        <a class="dropdown-item" href="#">Dropdown link</a>
-      </div>
-    </div>
-  </div>
+</nav>
+
+<div class="menu-left" *ngIf="isLeftMenuVisible">
+  <ul>
+      <li [ngClass]="{'open': isSchedeMenuOpened}">
+          <a class="cursor" data-toggle="collapse" data-target="#menu-category1" (click)="toggleSchedeMenuArrow()">
+              <div>
+                  <i class="fa fa-address-card-o"></i> Category 1
+                  <i class="fa pull-right" [ngClass]="{'fa-angle-right': isSchedeMenuOpened, 'fa-angle-down': !isSchedeMenuOpened}"></i>
+              </div>
+          </a>
+          <ul id="menu-category1" class="collapse in">
+              <li>
+                  <a>Item 1</a>
+              </li>
+              <li>
+                  <a>Item 2</a>
+              </li>
+              <li>
+                  <a>Item 3</a>
+              </li>
+              <li>
+                  <a>Item 4</a>
+              </li>
+              <li>
+                  <a>Item 5</a>
+              </li>
+              <li>
+                  <a>Item 6</a>
+              </li>
+              <li>
+                  <a>Item 7</a>
+              </li>
+              <li>
+                  <a>Item 8</a>
+              </li>
+              <li>
+                  <a>Item 9</a>
+              </li>
+          </ul>
+      </li>
+      <li [ngClass]="{'open': isRegistrazioneMenuOpened}">
+          <a class="cursor" data-toggle="collapse" data-target="#menu-category2" (click)="toggleRegistrazioneMenuArrow()">
+              <i class="fa fa-handshake-o"></i> Category 2
+              <i class="fa pull-right" [ngClass]="{'fa-angle-right': isRegistrazioneMenuOpened, 'fa-angle-down': !isRegistrazioneMenuOpened}"></i>
+          </a>
+          <ul id="menu-category2" class="collapse in">
+              <li>
+                  <a>Item 1</a>
+              </li>
+              <li>
+                  <a>Item 2</a>
+              </li>
+              <li>
+                  <a>Item 3</a>
+              </li>
+              <li>
+                  <a>Item 4</a>
+              </li>
+              <li>
+                  <a>Item 5</a>
+              </li>
+              <li>
+                  <a>Item 6</a>
+              </li>
+              <li>
+                  <a>Item 7</a>
+              </li>
+              <li>
+                  <a>Item 8</a>
+              </li>
+              <li>
+                  <a>Item 9</a>
+              </li>
+              <li>
+                  <a>Item 10</a>
+              </li>
+          </ul>
+      </li>
+      <li [ngClass]="{'open': isReportMenuOpened}">
+          <a class="cursor" data-toggle="collapse" data-target="#menu-category3" (click)="toggleReportMenuArrow()">
+              <i class="fa fa-file-text-o"></i> Category 3
+              <i class="fa pull-right" [ngClass]="{'fa-angle-right': isReportMenuOpened, 'fa-angle-down': !isReportMenuOpened}"></i>
+          </a>
+          <ul id="menu-category3" class="collapse in">
+              <li>
+                  <a>Item 1</a>
+              </li>
+              <li>
+                  <a>Item 2</a>
+              </li>
+              <li>
+                  <a>Item 3</a>
+              </li>
+              <li>
+                  <a>Item 4</a>
+              </li>
+              <li>
+                  <a>Item 5</a>
+              </li>
+              <li>
+                  <a>Item 6</a>
+              </li>
+          </ul>
+      </li>
+  </ul>
+</div>
+
+<div class="container-fluid" [ngClass]="{'main-content': isLeftMenuVisible}">
+  <h1>Title</h1>
+</div>
