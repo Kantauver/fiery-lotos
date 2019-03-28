@@ -16,6 +16,7 @@
         padding: 5px;
         color: #F0F3F6;
         border-radius: 4px;
+        margin-top: 5px;
     }
 
 .header-menu-right-button {
@@ -38,8 +39,8 @@
     }
 
 .menu-left {
+    float: left;
     padding-top: 10px;
-    position: fixed;
     top: 70px;
     bottom: 0;
     left: 0;
@@ -88,10 +89,14 @@
     }
 
 .main-content {
-    padding-left: 255px !important;
-    margin-top: 5px;
+    float: left;
+    width: calc(100% - 240px);
 }
 
 .cliccable {
     cursor: pointer;
+}
+
+.menu-and-content-wrapper{
+    height: calc(100% - 70px);
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,8 +6,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 
-export class AppComponent {
-  isLeftMenuVisible = true;
+export class AppComponent implements AfterViewInit {
+  @ViewChild('content') contentElement: ElementRef;
+  @ViewChild('menuAndContentWrapper') menuAndContentWrapperElement: ElementRef;
+
+  contentHeight: number;
+
+  constructor() {
+
+  }
+
+  isLeftMenuVisible = false;
   isSchedeMenuOpened = true;
   isRegistrazioneMenuOpened = true;
   isReportMenuOpened = true;
@@ -26,5 +35,20 @@ export class AppComponent {
 
   toggleReportMenuArrow() {
       this.isReportMenuOpened = !this.isReportMenuOpened;
+  }
+
+  setSidebarMenuHeight() {
+    const contentElementHeight = this.contentElement.nativeElement.offsetHeight;
+    const menuAndContentWrapperElementHeight = this.menuAndContentWrapperElement.nativeElement.offsetHeight;
+
+    this.contentHeight = contentElementHeight;
+
+    if (menuAndContentWrapperElementHeight > contentElementHeight) {
+      this.contentHeight = menuAndContentWrapperElementHeight;
+    }
+  }
+
+  ngAfterViewInit() {
+    this.setSidebarMenuHeight();
   }
 }
