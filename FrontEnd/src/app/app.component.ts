@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, ElementRef, ViewChild, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +12,7 @@ export class AppComponent implements AfterViewInit {
 
   contentHeight: number;
 
-  constructor() {
+  constructor(private changeDetector: ChangeDetectorRef) {
 
   }
 
@@ -46,6 +46,7 @@ export class AppComponent implements AfterViewInit {
     if (menuAndContentWrapperElementHeight > contentElementHeight) {
       this.contentHeight = menuAndContentWrapperElementHeight;
     }
+    this.changeDetector.detectChanges();
   }
 
   ngAfterViewInit() {

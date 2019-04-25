@@ -20,7 +20,7 @@
 </div>
 
 <div #menuAndContentWrapper class="menu-and-content-wrapper">
-    <div [ngStyle]="{'min-height': contentHeight+'px'}" class="menu-left" *ngIf="isLeftMenuVisible">
+    <div [ngStyle]="{'min-height': contentHeight+'px'}" class="menu-left" [hidden]="!isLeftMenuVisible">
         <ul>
             <li [ngClass]="{'open': isSchedeMenuOpened}">
                 <a class="cursor" data-toggle="collapse" data-target="#menu-category1" (click)="toggleSchedeMenuArrow()">
