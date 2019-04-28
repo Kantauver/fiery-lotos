@@ -100,3 +100,29 @@
 .menu-and-content-wrapper{
     height: calc(100% - 70px);
 }
+
+.scroll-button {
+    background: black;
+    color: #999;
+    padding: 9px;
+    border: 1px solid #999;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.scroll-button:hover {
+    color: white;
+    border: 1px solid white;
+}
+  
+.scroll-to-top {
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    opacity: 0;
+    transition: all .2s ease-in-out;
+}
+
+.show-scroll {
+    opacity: 1;
+}
