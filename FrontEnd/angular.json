@@ -24,11 +24,14 @@
             ],
             "styles": [
               "node_modules/font-awesome/css/font-awesome.min.css",
+              "src/resources/styles/bootstrap-darkly.min.css",
               "node_modules/devextreme/dist/css/dx.common.css",
-              "node_modules/devextreme/dist/css/dx.light.css",
+              "node_modules/devextreme/dist/css/dx.material.blue.dark.css",
               "src/styles.css"
             ],
             "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
               "node_modules/devextreme/dist/js/dx.web.js"
             ],
             "es5BrowserSupport": true
