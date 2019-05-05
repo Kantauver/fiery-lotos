@@ -12,6 +12,7 @@ import { DxLoadPanelModule } from 'devextreme-angular/ui/load-panel';
 // services
 import { LoaderService } from './services/loader/loader.service';
 import { AppConfigurationService } from './services/app-configuration.service';
+import { UiMessagesNotifierService } from './services/ui-messages-notifier.service';
 
 // components
 import { AppComponent } from './app.component';
@@ -37,6 +38,7 @@ export function loadConfig(config: AppConfigurationService) {
   ],
   providers: [
     LoaderService,
+    UiMessagesNotifierService,
     AppConfigurationService,
     {
       provide: APP_INITIALIZER,
