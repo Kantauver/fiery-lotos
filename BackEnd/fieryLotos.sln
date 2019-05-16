@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.421
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Adapters", "Adapters", "{7DDFD67E-BF0F-4D19-9B98-960C70706B7E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{2ECF08D4-F39B-42B0-935D-00ECAD8C095A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{E9AF71FC-0550-4C1C-A47E-79447393005A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fieryLotos.Adapters.WebAPI", "fieryLotos.Adapters.WebAPI\fieryLotos.Adapters.WebAPI.csproj", "{E140B534-DC04-4074-AD45-56C52E1966B6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E140B534-DC04-4074-AD45-56C52E1966B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E140B534-DC04-4074-AD45-56C52E1966B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E140B534-DC04-4074-AD45-56C52E1966B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E140B534-DC04-4074-AD45-56C52E1966B6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E140B534-DC04-4074-AD45-56C52E1966B6} = {7DDFD67E-BF0F-4D19-9B98-960C70706B7E}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {17950D3D-3972-4006-AD41-BF99733436E2}
+	EndGlobalSection
+EndGlobal
