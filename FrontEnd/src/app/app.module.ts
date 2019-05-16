@@ -8,6 +8,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { DxMenuModule } from 'devextreme-angular';
 import { DxLoadPanelModule } from 'devextreme-angular/ui/load-panel';
+import { DxTextBoxModule } from 'devextreme-angular/ui/text-box';
+import { DxButtonModule } from 'devextreme-angular/ui/button';
 
 // services
 import { LoaderService } from './services/loader/loader.service';
@@ -17,6 +19,7 @@ import { UiMessagesNotifierService } from './services/ui-messages-notifier.servi
 // components
 import { AppComponent } from './app.component';
 import { LoaderComponent } from './services/loader/loader.component';
+import { LoginComponent } from './login/login.component';
 
 export function loadConfig(config: AppConfigurationService) {
   return (): Promise<AppConfigModel> => {
@@ -27,14 +30,17 @@ export function loadConfig(config: AppConfigurationService) {
 @NgModule({
   declarations: [
     AppComponent,
-    LoaderComponent
+    LoaderComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     DxMenuModule,
-    DxLoadPanelModule
+    DxLoadPanelModule,
+    DxTextBoxModule,
+    DxButtonModule
   ],
   providers: [
     LoaderService,
