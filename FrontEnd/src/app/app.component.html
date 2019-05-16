@@ -126,8 +126,8 @@
         </ul>
         </div>
 
-    <div #content class="container-fluid" [ngClass]="{'main-content': isLeftMenuVisible}">
-        <h1>Title</h1>
+    <div #content [ngClass]="{'main-content': isLeftMenuVisible}">
+        <router-outlet></router-outlet>
         <div [ngClass]="{'show-scroll': showScroll}" 
                 (click)="scrollToTop()" 
                 class="scroll-to-top scroll-button">
@@ -136,3 +136,4 @@
     </div>
 </div>
 
+<app-loader></app-loader>
