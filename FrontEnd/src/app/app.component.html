@@ -4,13 +4,13 @@
             <i class="fa fa-2x fa-bars menu-toggle-button" aria-hidden="true" (click)="toggleLeftMenu()"></i>
         </div>
         <div class="col text-center">
-            <a>
+            <a routerLink="/home">
                 <img class="logo-image" src="./assets/images/fiery-lotos-logo.png" alt="Fiery Lotos"/>
             </a>
         </div>
         <div class="col text-right">
             <div class="header-menu-right-button">
-                <a title="User">
+                <a title="User" routerLink="/login">
                     <i class="fa fa-user fa-2x"></i>
                     <span>Lotos</span>
                 </a>
@@ -61,15 +61,15 @@
             </li>
             <li [ngClass]="{'open': isRegistrazioneMenuOpened}">
                 <a class="cursor" data-toggle="collapse" data-target="#menu-category2" (click)="toggleRegistrazioneMenuArrow()">
-                    <i class="fa fa-handshake-o"></i> Category 2
+                    <i class="fa fa-handshake-o"></i> Модерация
                     <i class="fa pull-right" [ngClass]="{'fa-angle-right': isRegistrazioneMenuOpened, 'fa-angle-down': !isRegistrazioneMenuOpened}"></i>
                 </a>
                 <ul id="menu-category2" class="collapse in">
-                    <li>
-                        <a>Item 1</a>
+                    <li routerLink="/manage-articles" routerLinkActive="active-sub-menu">
+                        <a>Управление статьями</a>
                     </li>
-                    <li>
-                        <a>Item 2</a>
+                    <li routerLink="/user-profile" routerLinkActive="active-sub-menu">
+                        <a>Профиль</a>
                     </li>
                     <li>
                         <a>Item 3</a>
