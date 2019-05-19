@@ -33,10 +33,12 @@ export class UserService {
         const urlRequest = `${this.appConfigurationService.config.apiHostUrl}/api/auth/login`;
         return this.http.post<any[]>(urlRequest, loginData).pipe(
             map((response: any) => {
-                this.userSessionDataModel.userName = loginData.userName;
-                this.userSessionDataModel.token = response.token;
-                this.storageService.saveUserSessionData(this.userSessionDataModel);
-                this.isLoggedIn = true;
+                if (response.success) {
+                    this.userSessionDataModel.userName = loginData.userName;
+                    this.userSessionDataModel.token = response.token;
+                    this.storageService.saveUserSessionData(this.userSessionDataModel);
+                    this.isLoggedIn = true;
+                }
                 return response;
             }),
             finalize(() => {
@@ -54,6 +56,17 @@ export class UserService {
                 this.isLoggedIn = false;
                 this.userSessionDataModel = new UserSessionDataModel();
                 this.storageService.deleteUserSessionData();
+                this.loader.hide();
+            })
+        );
+    }
+
+    checkIsAutenticated() {
+        this.loader.show();
+        const body = new LoginQueryModel();
+        const urlRequest = `${this.appConfigurationService.config.apiHostUrl}/api/auth/check-is-autenticated`;
+        return this.http.post<any[]>(urlRequest, body).pipe(
+            finalize(() => {
                 this.loader.hide();
             })
         );

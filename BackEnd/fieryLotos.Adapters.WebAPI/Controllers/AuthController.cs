@@ -28,20 +28,26 @@ namespace fieryLotos.Adapters.WebAPI.Controllers
                 var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey@345"));
                 var signinCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
 
+                var claims = new List<Claim>
+                {
+                    new Claim(ClaimTypes.Name, user.UserName),
+                    new Claim(ClaimTypes.Role, "Manager")
+                };
+
                 var tokeOptions = new JwtSecurityToken(
                     issuer: "http://localhost:4200",
                     audience: "https://localhost:44361",
-                    claims: new List<Claim>(),
+                    claims: claims,
                     expires: DateTime.Now.AddMinutes(5),
                     signingCredentials: signinCredentials
                 );
 
                 var tokenString = new JwtSecurityTokenHandler().WriteToken(tokeOptions);
-                return Ok(new { Token = tokenString });
+                return Ok(new { Token = tokenString, Success = true });
             }
             else
             {
-                return Unauthorized();
+                return Ok(new { Success = false });
             }
         }
 
@@ -49,6 +55,12 @@ namespace fieryLotos.Adapters.WebAPI.Controllers
         public IActionResult Logout([FromBody]LoginQuery user)
         {
             return Ok(new { test = "logout result" });
+        }
+
+        [HttpPost, Route("check-is-autenticated")]
+        public IActionResult CheckIsAutenticated([FromBody]LoginQuery user)
+        {
+            return Ok(User.Identity.IsAuthenticated);
         }
     }
 }

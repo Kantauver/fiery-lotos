@@ -30,6 +30,7 @@ import { StorageService } from './services/storage.service';
 import { LoggedInGuard } from './access-guards/logged-in.guard';
 import { LoggedOutGuard } from './access-guards/logged-out.guard';
 import { GenericHttpErrorInterceptor } from './interceptors/generic-http-error-interceptor';
+import { TokenInterceptor } from './interceptors/token-interceptor';
 
 // components
 import { AppComponent } from './app.component';
@@ -83,6 +84,11 @@ export function loadConfig(config: AppConfigurationService) {
     {
       provide: HTTP_INTERCEPTORS,
       useClass: GenericHttpErrorInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
       multi: true
     }
   ],

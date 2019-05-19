@@ -12,7 +12,7 @@ namespace fieryLotos.Adapters.WebAPI.Controllers
     public class ArticlesController : ControllerBase
     {
         [Route("list")]
-        [HttpGet, Authorize]
+        [HttpGet, Authorize(Roles = "Manager")]
         public IEnumerable<string> GetArticlesList()
         {
             return new string[] { "Article 1", "Article 2" };

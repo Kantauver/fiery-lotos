@@ -34,7 +34,12 @@ export class GenericHttpErrorInterceptor implements HttpInterceptor {
         //     ' With error ', event.error);
 
         if (event instanceof HttpErrorResponse) {
-            this.uiMessagesNotifierService.notifyError(event.message);
+            console.log(event);
+            if (event.status === 401) {
+                this.uiMessagesNotifierService.notifyWarning('Доступ закрыт');
+            } else {
+                this.uiMessagesNotifierService.notifyError(event.message);
+            }
         }
     }
 }

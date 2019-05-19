@@ -20,8 +20,7 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    component: HomePageComponent,
-    canActivate: [LoggedInGuard]
+    component: HomePageComponent
   },
   {
     path: 'manage-articles',

@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   loginData: LoginQueryModel = new LoginQueryModel();
+  invalidLogin = false;
 
   @ViewChild('loginValidationGroup') loginValidationGroup: DxValidationGroupComponent;
 
@@ -21,16 +22,21 @@ export class LoginComponent implements OnInit {
               private uiMessagesNotifierService: UiMessagesNotifierService) { }
 
   login() {
+    this.invalidLogin = false;
     const validationResult = this.loginValidationGroup.instance.validate();
     if (validationResult.isValid === false) {
       return;
     }
 
     this.userService.login(this.loginData).subscribe(
-      (data: any) => {
-        console.log(data);
-        this.uiMessagesNotifierService.notifyOk('Вход выполнен успешно');
-        this.router.navigate(['/user-profile']);
+      (response: any) => {
+        console.log(response);
+        if (response.success) {
+          this.uiMessagesNotifierService.notifyOk('Вход выполнен успешно');
+          this.router.navigate(['/user-profile']);
+        } else {
+          this.invalidLogin = true;
+        }
       },
       (error: any) => {
         console.log(error);
