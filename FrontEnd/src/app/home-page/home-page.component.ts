@@ -11,9 +11,69 @@ export class HomePageComponent implements OnInit {
 
   constructor(private webApiService: WebApiService, private userService: UserService) { }
 
-  // protected test
+  // check is autenticated
+  checkIsAutenticated() {
+    this.userService.checkIsAuthenticated().subscribe(
+      (data: any) => {
+        console.log(data);
+      },
+      (error: any) => {
+        console.log(error);
+      }
+    );
+  }
+
+  // get user permissions
+  getUserPermissions() {
+    this.userService.getUserPermissions().subscribe(
+      (data: any) => {
+        console.log(data);
+      },
+      (error: any) => {
+        console.log(error);
+      }
+    );
+  }
+
+  // editor
   getArticlesList() {
     this.webApiService.getArticlesList().subscribe(
+      (data: any) => {
+        console.log(data);
+      },
+      (error: any) => {
+        console.log(error);
+      }
+    );
+  }
+
+  // Manager
+  getArticlesTags() {
+    this.webApiService.getArticlesTags().subscribe(
+      (data: any) => {
+        console.log(data);
+      },
+      (error: any) => {
+        console.log(error);
+      }
+    );
+  }
+
+  // Manager and Editor
+  getArticlesKeyWords() {
+    this.webApiService.getArticlesKeyWords().subscribe(
+      (data: any) => {
+        console.log(data);
+      },
+      (error: any) => {
+        console.log(error);
+      }
+    );
+  }
+
+  // Any autorized
+  getArticlesComments() {
+    this.webApiService.getArticlesComments().subscribe(
       (data: any) => {
         console.log(data);
       },
@@ -26,18 +86,6 @@ export class HomePageComponent implements OnInit {
   // open test
   getArticlesCategories() {
     this.webApiService.getArticlesCategories().subscribe(
-      (data: any) => {
-        console.log(data);
-      },
-      (error: any) => {
-        console.log(error);
-      }
-    );
-  }
-
-  // check is autenticated
-  checkIsAutenticated() {
-    this.userService.checkIsAutenticated().subscribe(
       (data: any) => {
         console.log(data);
       },

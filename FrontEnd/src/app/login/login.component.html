@@ -3,7 +3,7 @@
     <div class="col-md-6 offset-md-3 col-sm-10 offset-sm-1 col-xs-10 offset-xs-1 col-xl-4 offset-xl-4 text-center">
       <dx-validation-group #loginValidationGroup>
         <h3 class="login-title">Врата</h3>
-        <div *ngIf="invalidLogin" class="invalid-login-message">Неверный логин или пароль</div><br/>
+        <div *ngIf="invalidLogin" class="invalid-login-message">{{errorMessage}}</div><br/>
         <dx-text-box class="login-form-camp" 
                     placeholder="Nomine"
                     [(value)]="loginData.userName">

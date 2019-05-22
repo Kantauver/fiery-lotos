@@ -1,24 +1,25 @@
 import { Injectable } from '@angular/core';
 import { Router, CanActivate } from '@angular/router';
 import { UserService } from '../services/user.service';
+import { UiMessagesNotifierService } from '../services/ui-messages-notifier.service';
 import { map } from 'rxjs/operators';
 import { Observable} from 'rxjs';
 
 @Injectable()
-export class LoggedInGuard implements CanActivate {
+export class CanEditTagsGuard implements CanActivate {
 
   constructor(private userService: UserService,
+              private uiMessagesNotifierService: UiMessagesNotifierService,
               private router: Router) {}
 
   canActivate(): Observable<boolean> {
-    return this.userService.checkIsAuthenticated().pipe(map(
+    return this.userService.getUserPermissions().pipe(map(
       response => {
-        console.log('IsAuthenticated: ');
-        console.log(response);
-        if (response) {
+        if (response.canEditTags) {
             return true;
         } else {
-          this.router.navigate(['/login']);
+          this.uiMessagesNotifierService.notifyWarning('Доступ закрыт');
+          this.router.navigate(['/home']);
           return false;
         }
       },

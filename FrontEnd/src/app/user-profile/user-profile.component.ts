@@ -15,16 +15,7 @@ export class UserProfileComponent implements OnInit {
               private uiMessagesNotifierService: UiMessagesNotifierService) { }
 
   logout() {
-    this.userService.logout().subscribe(
-      (data: any) => {
-        console.log(data);
-        this.uiMessagesNotifierService.notifyOk('Выход выполнен успешно');
-        this.router.navigate(['/login']);
-      },
-      (error: any) => {
-        console.log(error);
-      }
-    );
+    this.userService.logout();
   }
 
   ngOnInit() {

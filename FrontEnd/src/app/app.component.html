@@ -25,13 +25,16 @@
             <li [ngClass]="{'open': isSchedeMenuOpened}">
                 <a class="cursor" data-toggle="collapse" data-target="#menu-category1" (click)="toggleSchedeMenuArrow()">
                     <div>
-                        <i class="fa fa-address-card-o"></i> Category 1
+                        <i class="fa fa-address-card-o"></i> Test
                         <i class="fa pull-right" [ngClass]="{'fa-angle-right': isSchedeMenuOpened, 'fa-angle-down': !isSchedeMenuOpened}"></i>
                     </div>
                 </a>
                 <ul id="menu-category1" class="collapse in">
-                    <li>
-                        <a>Item 1</a>
+                    <li routerLink="/home" routerLinkActive="active-sub-menu">
+                        <a>Test functions</a>
+                    </li>
+                    <li routerLink="/news" routerLinkActive="active-sub-menu">
+                        <a>Test visibility</a>
                     </li>
                     <li>
                         <a>Item 2</a>
@@ -61,39 +64,24 @@
             </li>
             <li [ngClass]="{'open': isRegistrazioneMenuOpened}">
                 <a class="cursor" data-toggle="collapse" data-target="#menu-category2" (click)="toggleRegistrazioneMenuArrow()">
-                    <i class="fa fa-handshake-o"></i> Модерация
+                    <i class="fa fa-handshake-o"></i> Test Web-API routes
                     <i class="fa pull-right" [ngClass]="{'fa-angle-right': isRegistrazioneMenuOpened, 'fa-angle-down': !isRegistrazioneMenuOpened}"></i>
                 </a>
                 <ul id="menu-category2" class="collapse in">
                     <li routerLink="/manage-articles" routerLinkActive="active-sub-menu">
-                        <a>Управление статьями</a>
+                        <a>Articles (Editor)</a>
+                    </li>
+                    <li routerLink="/manage-tags" routerLinkActive="active-sub-menu">
+                        <a>Tags (Manager)</a>
+                    </li>
+                    <li routerLink="/manage-key-words" routerLinkActive="active-sub-menu">
+                        <a>Key Words (Manager, Editor)</a>
+                    </li>
+                    <li routerLink="/manage-comments" routerLinkActive="active-sub-menu">
+                        <a>Comments (Any authorized)</a>
                     </li>
                     <li routerLink="/user-profile" routerLinkActive="active-sub-menu">
-                        <a>Профиль</a>
-                    </li>
-                    <li>
-                        <a>Item 3</a>
-                    </li>
-                    <li>
-                        <a>Item 4</a>
-                    </li>
-                    <li>
-                        <a>Item 5</a>
-                    </li>
-                    <li>
-                        <a>Item 6</a>
-                    </li>
-                    <li>
-                        <a>Item 7</a>
-                    </li>
-                    <li>
-                        <a>Item 8</a>
-                    </li>
-                    <li>
-                        <a>Item 9</a>
-                    </li>
-                    <li>
-                        <a>Item 10</a>
+                        <a>Profile (any authorizrd)</a>
                     </li>
                 </ul>
             </li>
@@ -133,7 +121,6 @@
                 class="scroll-to-top scroll-button">
           <i class="fa fa-arrow-up"></i> вверх
         </div>
+        <app-loader></app-loader>
     </div>
 </div>
-
-<app-loader></app-loader>

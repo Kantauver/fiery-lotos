@@ -7,21 +7,21 @@ export class StorageService {
   constructor() { }
 
   saveUserSessionData(userSessionData: UserSessionDataModel) {
-    sessionStorage.setItem('ums_userSessionData', JSON.stringify(userSessionData));
+    localStorage.setItem('ums_userSessionData', JSON.stringify(userSessionData));
   }
 
   getUserSessionData(): UserSessionDataModel {
-    const userSessionDataFromStorage = sessionStorage.getItem('ums_userSessionData');
+    const userSessionDataFromStorage = localStorage.getItem('ums_userSessionData');
     const userSessionData: UserSessionDataModel = JSON.parse(userSessionDataFromStorage);
     return userSessionData;
   }
 
   deleteUserSessionData() {
-    sessionStorage.removeItem('ums_userSessionData');
+    localStorage.removeItem('ums_userSessionData');
   }
 
   checkIfExistUserSessionDataInStorage(): boolean {
-    const userSessionDataExistInStorage: boolean = !!sessionStorage.getItem('ums_userSessionData');
+    const userSessionDataExistInStorage: boolean = !!localStorage.getItem('ums_userSessionData');
     return userSessionDataExistInStorage;
   }
 }

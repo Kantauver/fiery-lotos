@@ -6,6 +6,8 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using fieryLotos.Ports.Driven.QueryModel;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 
@@ -15,6 +17,8 @@ namespace fieryLotos.Adapters.WebAPI.Controllers
     [ApiController]
     public class AuthController : ControllerBase
     {
+        private readonly IAuthorizationService authorizationService;
+
         [HttpPost, Route("login")]
         public IActionResult Login([FromBody]LoginQuery user)
         {
@@ -22,19 +26,30 @@ namespace fieryLotos.Adapters.WebAPI.Controllers
             {
                 return BadRequest("Invalid client request");
             }
+            var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey@345"));
+            var signinCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
+            var claims = new List<Claim>();
+            var tokeOptions = new JwtSecurityToken(
+                issuer: "http://localhost:4200",
+                audience: "https://localhost:44361",
+                claims: claims,
+                expires: DateTime.Now.AddMinutes(5),
+                signingCredentials: signinCredentials
+            );
+            var tokenString = "";
 
-            if (user.UserName == "Lotos" && user.Password == "123")
+            LoginResult loginResult = new LoginResult();
+
+            if (user.UserName == "superman" && user.Password == "superman")
             {
-                var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey@345"));
-                var signinCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
-
-                var claims = new List<Claim>
+                claims = new List<Claim>
                 {
                     new Claim(ClaimTypes.Name, user.UserName),
+                    new Claim(ClaimTypes.Role, "Editor"),
                     new Claim(ClaimTypes.Role, "Manager")
                 };
 
-                var tokeOptions = new JwtSecurityToken(
+                tokeOptions = new JwtSecurityToken(
                     issuer: "http://localhost:4200",
                     audience: "https://localhost:44361",
                     claims: claims,
@@ -42,25 +57,148 @@ namespace fieryLotos.Adapters.WebAPI.Controllers
                     signingCredentials: signinCredentials
                 );
 
-                var tokenString = new JwtSecurityTokenHandler().WriteToken(tokeOptions);
-                return Ok(new { Token = tokenString, Success = true });
+                tokenString = new JwtSecurityTokenHandler().WriteToken(tokeOptions);
+
+                loginResult = new LoginResult
+                {
+                    Success = true,
+                    ErrorMessage = null,
+                    Token = tokenString,
+                    Permissions = GetPermissionsFromClaims(claims)
+                };
+
+                return Ok(loginResult);
             }
-            else
+            if (user.UserName == "editor" && user.Password == "editor")
             {
-                return Ok(new { Success = false });
+                claims = new List<Claim>
+                {
+                    new Claim(ClaimTypes.Name, user.UserName),
+                    new Claim(ClaimTypes.Role, "Editor")
+                };
+
+                tokeOptions = new JwtSecurityToken(
+                    issuer: "http://localhost:4200",
+                    audience: "https://localhost:44361",
+                    claims: claims,
+                    expires: DateTime.Now.AddMinutes(5),
+                    signingCredentials: signinCredentials
+                );
+
+                tokenString = new JwtSecurityTokenHandler().WriteToken(tokeOptions);
+
+                loginResult = new LoginResult
+                {
+                    Success = true,
+                    ErrorMessage = null,
+                    Token = tokenString,
+                    Permissions = GetPermissionsFromClaims(claims)
+                };
+
+                return Ok(loginResult);
             }
+            if (user.UserName == "manager" && user.Password == "manager")
+            {
+                claims = new List<Claim>
+                {
+                    new Claim(ClaimTypes.Name, user.UserName),
+                    new Claim(ClaimTypes.Role, "Manager")
+                };
+
+                tokeOptions = new JwtSecurityToken(
+                    issuer: "http://localhost:4200",
+                    audience: "https://localhost:44361",
+                    claims: claims,
+                    expires: DateTime.Now.AddMinutes(5),
+                    signingCredentials: signinCredentials
+                );
+
+                tokenString = new JwtSecurityTokenHandler().WriteToken(tokeOptions);
+
+                loginResult = new LoginResult
+                {
+                    Success = true,
+                    ErrorMessage = null,
+                    Token = tokenString,
+                    Permissions = GetPermissionsFromClaims(claims)
+                };
+
+                return Ok(loginResult);
+            }
+            if (user.UserName == "user" && user.Password == "user")
+            {
+                claims = new List<Claim>
+                {
+                    new Claim(ClaimTypes.Name, user.UserName)
+                };
+
+                tokeOptions = new JwtSecurityToken(
+                    issuer: "http://localhost:4200",
+                    audience: "https://localhost:44361",
+                    claims: claims,
+                    expires: DateTime.Now.AddMinutes(5),
+                    signingCredentials: signinCredentials
+                );
+
+                tokenString = new JwtSecurityTokenHandler().WriteToken(tokeOptions);
+
+                loginResult = new LoginResult
+                {
+                    Success = true,
+                    ErrorMessage = null,
+                    Token = tokenString,
+                    Permissions = GetPermissionsFromClaims(claims)
+                };
+
+                return Ok(loginResult);
+            }
+
+            loginResult = new LoginResult
+            {
+                Success = false,
+                ErrorMessage = "Неверный логин или пароль (server)",
+                Token = null,
+                Permissions = null
+            };
+
+            return Ok(loginResult);
         }
 
-        [HttpPost, Route("logout")]
-        public IActionResult Logout([FromBody]LoginQuery user)
-        {
-            return Ok(new { test = "logout result" });
-        }
 
-        [HttpPost, Route("check-is-autenticated")]
-        public IActionResult CheckIsAutenticated([FromBody]LoginQuery user)
+        [HttpPost, Route("check-is-authenticated")]
+        public IActionResult CheckIsAuthenticated([FromBody]object body)
         {
             return Ok(User.Identity.IsAuthenticated);
+        }
+
+        [HttpGet, Route("get-user-permissions"), Authorize]
+        public async Task<UserPermissions> GetUserPermissions()
+        {
+            var claims = User.Claims.ToList();
+            UserPermissions userPermissions = GetPermissionsFromClaims(claims);
+
+            return userPermissions;
+        }
+
+        private UserPermissions GetPermissionsFromClaims(List<Claim> claims)
+        {
+            UserPermissions userPermissions = new UserPermissions();
+
+            foreach (var claim in claims)
+            {
+                if (claim.Type == ClaimTypes.Role && claim.Value == "Manager")
+                {
+                    userPermissions.CanEditTags = true;
+                    userPermissions.CanEditKeyWords = true;
+                }
+                if (claim.Type == ClaimTypes.Role && claim.Value == "Editor")
+                {
+                    userPermissions.CanEditArticles = true;
+                    userPermissions.CanEditKeyWords = true;
+                }
+            }
+
+            return userPermissions;
         }
     }
 }

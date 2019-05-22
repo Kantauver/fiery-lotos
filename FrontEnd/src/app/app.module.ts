@@ -29,6 +29,9 @@ import { WebApiService } from './services/web-api.service';
 import { StorageService } from './services/storage.service';
 import { LoggedInGuard } from './access-guards/logged-in.guard';
 import { LoggedOutGuard } from './access-guards/logged-out.guard';
+import { CanEditArticlesGuard } from './access-guards/can-edit-articles.guard';
+import { CanEditTagsGuard } from './access-guards/can-edit-tags.guard';
+import { CanEditKeyWordsGuard } from './access-guards/can-edit-key-words.guard';
 import { GenericHttpErrorInterceptor } from './interceptors/generic-http-error-interceptor';
 import { TokenInterceptor } from './interceptors/token-interceptor';
 
@@ -39,6 +42,10 @@ import { LoginComponent } from './login/login.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { ManageArticlesComponent } from './manage-articles/manage-articles.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { ManageTagsComponent } from './manage-tags/manage-tags.component';
+import { ManageKeyWordsComponent } from './manage-key-words/manage-key-words.component';
+import { ManageCommentsComponent } from './manage-comments/manage-comments.component';
+import { NewsComponent } from './news/news.component';
 
 export function loadConfig(config: AppConfigurationService) {
   return (): Promise<AppConfigModel> => {
@@ -53,7 +60,11 @@ export function loadConfig(config: AppConfigurationService) {
     LoginComponent,
     HomePageComponent,
     ManageArticlesComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    ManageTagsComponent,
+    ManageKeyWordsComponent,
+    ManageCommentsComponent,
+    NewsComponent
   ],
   imports: [
     BrowserModule,
@@ -74,6 +85,9 @@ export function loadConfig(config: AppConfigurationService) {
     StorageService,
     LoggedInGuard,
     LoggedOutGuard,
+    CanEditArticlesGuard,
+    CanEditTagsGuard,
+    CanEditKeyWordsGuard,
     AppConfigurationService,
     {
       provide: APP_INITIALIZER,
