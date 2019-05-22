@@ -1,5 +1,5 @@
 .login-container{
-    margin-top: 100px;
+    padding-top: 100px;
 }
 
 .login-title{
@@ -13,4 +13,8 @@
 
 .login-button{
     margin-top: 30px;
+}
+
+.invalid-login-message{
+    
 }
