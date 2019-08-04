@@ -1,34 +1,81 @@
 <div class="container-fluid">
-  <div class="row login-container">
-    <div class="col-md-8 offset-md-2 col-sm-10 offset-sm-1 col-xs-10 offset-xs-1 col-xl-6 offset-xl-3 text-center">
-      <h3 class="login-title">Test Web-API</h3>
-      <dx-button text="Check is autenticated" 
-                 class="login-button"
-                 (onClick)="checkIsAutenticated()"></dx-button><br>
-      <hr>
-      <dx-button text="get user permissions" 
-                 class="login-button"
-                 (onClick)="getUserPermissions()"></dx-button><br>
-      <hr>
-      <dx-button text="Get Articles (Editor)" 
-                 class="login-button"
-                 (onClick)="getArticlesList()"></dx-button><br>
-      <hr>
-      <dx-button text="Get Articles Tags (Manager)" 
-                 class="login-button"
-                 (onClick)="getArticlesTags()"></dx-button><br>
-      <hr>
-      <dx-button text="Get Key Words (Manager and Editor)" 
-                 class="login-button"
-                 (onClick)="getArticlesKeyWords()"></dx-button><br>
-      <hr>
-      <dx-button text="Get Comments (Any authorized)" 
-                 class="login-button"
-                 (onClick)="getArticlesComments()"></dx-button><br>
-      <hr>
-      <dx-button text="Get Articles Categories (Open)" 
-                 class="login-button"
-                 (onClick)="getArticlesCategories()"></dx-button><br>
-      <hr>
+  <div class="row">
+    <div class="col-md-6 last-articles-container">
+      <h4 class="container-title">Последние записи в блоге</h4>
+      <div class="article-preview">
+        <h5 class="article-preview-title">
+          <a href="#">Смерти нет — на том свете тоже кипит жизнь</a>
+        </h5>
+        <div class="article-preview-info">
+          Автор: <a href="#">Lotos</a> | Раздел: <a href="#">Непознанное</a> | Дата: 05/04/2017
+        </div>
+        <div class="article-preview-text">
+          <img class="article-preview-image" src="http://manvantara.info/wp-content/uploads/2017/04/original.jpg" alt="">
+          Об этом говорят многочисленные сообщения из загробного мира – голоса умерших принимают по радио, на компьютеры и даже на мобильные телефоны. В такое трудно поверить, но это факт. Автор этих строк тоже был, скорее, скептиком – пока не стал свидетелем такого контакта с загробным миром в Санкт-Петербурге.
+        </div>
+      </div>
+      <div class="article-preview">
+        <h5 class="article-preview-title">
+          <a href="#">«Да гори оно всё синим пламенем?!»*</a>
+        </h5>
+        <div class="article-preview-info">
+          Автор: <a href="#">Liafin</a> | Раздел: <a href="#">Рериховская среда</a> | Дата: 09/01/2018
+        </div>
+        <div class="article-preview-text">
+          <img class="article-preview-image" src="http://manvantara.info/wp-content/uploads/2018/01/blue_agni-150x150.gif" alt="">
+          Проходят год за годом, но бумажные и сетевые войны, склоки и распри вокруг материального наследия семьи Рерихов всё не утихают… Оппоненты как и год, и два, и пять лет назад марают друг друга словесной грязью, беспросветно завязнув в ожесточённой вражде.
+        </div>
+      </div>
+      <div class="article-preview">
+        <h5 class="article-preview-title">
+          <a href="#">Что главное для последователей Учения?</a>
+        </h5>
+        <div class="article-preview-info">
+          Автор: <a href="#">Lotos</a> | Раздел: <a href="#">Агни Йога</a> | Дата: 25/02/2017
+        </div>
+        <div class="article-preview-text">
+          <img class="article-preview-image" src="http://manvantara.info/wp-content/uploads/2018/02/na_visotah-150x150.jpg" alt="">
+          Для явления Учения, данного на многие тысячелетия, предназначенного как этому физическому плану, так и тем, кто уйдя за черту ещё живёт земными стереотипами и земными интересами, для Учения, которое синтетически включает в себя лучшие прежние алмазы Истины и Опыта, но также и открывает совершенно новые горизонты, которые были либо не известны, либо преждевременны для открытия раньше – для такого МНОГОМЕРНОГО явления невозможно линейной логикой вдоль прямой определить, что тут главное, а что не главное.
+        </div>
+      </div>
+      <div class="article-preview">
+        <h5 class="article-preview-title">
+          <a href="#">Тираннозавр умер, да здравствует Европазавр* (?/!/…)</a>
+        </h5>
+        <div class="article-preview-info">
+          Автор: <a href="#">Lotos</a> | Раздел: <a href="#">Рериховская среда</a> | Дата: 29/09/2017
+        </div>
+        <div class="article-preview-text">
+          <img class="article-preview-image" src="http://manvantara.info/wp-content/uploads/2017/09/dragons-150x150.jpg" alt="">
+          По прошествии времени всё печальней видеть следствия ошибочного курса руководства и приверженцев Международного Центра Рерихов, взирать на результаты действия кармического маятника, который как шар-бабой одним махом снёс МЦР, как колосса на глиняных ногах.   Каковы причины этого? Они ясны как Божий день.
+        </div>
+      </div>
+      <div class="article-preview">
+        <h5 class="article-preview-title">
+          <a href="#">Задокументированные свидетельства реинкарнации</a>
+        </h5>
+        <div class="article-preview-info">
+          Автор: <a href="#">Lotos</a> | Раздел: <a href="#">Непознанное</a> | Дата: 09/04/2017
+        </div>
+        <div class="article-preview-text">
+          <img class="article-preview-image" src="http://manvantara.info/wp-content/uploads/2018/04/reincarnation-150x150.jpg" alt="">
+          Отрывок из книги «Адвокат Тонкого Мира»  (Виктор Заммит) 25. Реинкарнация   Чем больше невежество, тем сильнее догматизм. Уильям Остлер (William Ostler), доктор медицины   Реинкарнация буквально означает «возвращение обратно в плоть». На латыни слово carne означает «плоть». Некоторые западные теологи пытаются высмеять идею реинкарнации, заявляя, что человек может вернуться обратно в образе москита или таракана.
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 different-content-container">
+      <h4 class="container-title">Разные статьи</h4>
+      <p>Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Вдали от всех живут они в буквенных домах на берегу Семантика большого языкового океана.</p>
+
+      <p>Маленький ручеек Даль журчит по всей стране и обеспечивает ее всеми необходимыми правилами. Эта парадигматическая страна, в которой жаренные члены предложения залетают прямо в рот.</p>
+
+      <p>Даже всемогущая пунктуация не имеет власти над рыбными текстами, ведущими безорфографичный образ жизни. Однажды одна маленькая строчка рыбного текста по имени Lorem ipsum решила выйти в большой мир грамматики.</p>
+
+      <p>Великий Оксмокс предупреждал ее о злых запятых, диких знаках вопроса и коварных точках с запятой, но текст не дал сбить себя с толку. Он собрал семь своих заглавных букв, подпоясал инициал за пояс и пустился в дорогу.</p>
+
+      <p>Взобравшись на первую вершину курсивных гор, бросил он последний взгляд назад, на силуэт своего родного города Буквоград, на заголовок деревни Алфавит и на подзаголовок своего переулка Строчка. Грустный риторический вопрос скатился по его щеке и он продолжил свой путь.</p>
+
+      <p>По дороге встретил текст рукопись. Она предупредила его: «В моей стране все переписывается по несколько раз. Единственное, что от меня осталось, это приставка «и». Возвращайся ты лучше в свою безопасную страну». Не послушавшись рукописи, наш текст продолжил свой путь. Вскоре ему повстречался коварный составитель</p>
+    </div>
   </div>
 </div>

@@ -1,0 +1,38 @@
+.last-articles-container {
+    padding-top: 10px;
+    border-right: 1px solid white;
+}
+
+.different-content-container {
+    padding-top: 10px;
+}
+
+.container-title {
+    padding-bottom: 10px;
+    border-bottom: 1px solid white;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.article-preview {
+    padding-bottom: 15px;
+    border-bottom: 1px solid white;
+}
+
+.article-preview-title {
+    margin-top: 10px;
+}
+
+.article-preview-info {
+    padding-bottom: 10px;
+}
+
+.article-preview-image {
+    float: left;
+    margin-right: 10px;
+    width: 100px;
+}
+
+.last-articles-container .article-preview:last-child {
+    border-bottom: none;
+}
