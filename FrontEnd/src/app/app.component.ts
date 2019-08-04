@@ -12,8 +12,8 @@ import { Component,
 })
 
 export class AppComponent implements AfterViewInit {
-  @ViewChild('content') contentElement: ElementRef;
-  @ViewChild('menuAndContentWrapper') menuAndContentWrapperElement: ElementRef;
+  @ViewChild('content', {static: true}) contentElement: ElementRef;
+  @ViewChild('menuAndContentWrapper', {static: true}) menuAndContentWrapperElement: ElementRef;
 
   isLeftMenuVisible = false;
   isSchedeMenuOpened = true;

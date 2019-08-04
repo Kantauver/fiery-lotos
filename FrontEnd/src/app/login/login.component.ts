@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   invalidLogin = false;
   errorMessage: string;
 
-  @ViewChild('loginValidationGroup') loginValidationGroup: DxValidationGroupComponent;
+  @ViewChild('loginValidationGroup', {static: true}) loginValidationGroup: DxValidationGroupComponent;
 
   constructor(public userService: UserService,
               private router: Router,

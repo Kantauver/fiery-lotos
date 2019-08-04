@@ -26,7 +26,7 @@
               "node_modules/font-awesome/css/font-awesome.min.css",
               "src/resources/styles/bootstrap-darkly.min.css",
               "node_modules/devextreme/dist/css/dx.common.css",
-              "node_modules/devextreme/dist/css/dx.material.blue.dark.css",
+              "node_modules/devextreme/dist/css/dx.material.teal.dark.compact.css",
               "src/styles.css"
             ],
             "scripts": [
